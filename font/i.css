@@ -1,0 +1,28 @@
+@font-face {
+  font-family: "i";
+  src: url('i.eot?t=1616321410674'); /* IE9*/
+  src: url('i.eot?t=1616321410674#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url("i.woff2?t=1616321410674") format("woff2"),
+  url("i.woff?t=1616321410674") format("woff"),
+  url('i.ttf?t=1616321410674') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('i.svg?t=1616321410674#i') format('svg'); /* iOS 4.1- */
+}
+
+[class^="i-"], [class*=" i-"] {
+  font-family: 'i' !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.i-abell:before { content: "\ea01"; }
+.i-bars:before { content: "\ea02"; }
+.i-check:before { content: "\ea03"; }
+.i-cloud-sun:before { content: "\ea04"; }
+.i-external-link:before { content: "\ea05"; }
+.i-lightbulb:before { content: "\ea06"; }
+.i-moon:before { content: "\ea07"; }
+.i-sun:before { content: "\ea08"; }
+.i-times:before { content: "\ea09"; }

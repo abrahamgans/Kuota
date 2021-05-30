@@ -1,0 +1,862 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-125454191-5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-125454191-5');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="description" content="Abell - a Static-Site-Generator for JavaScript Developers. Create fast and scalable static-sites using the syntax of HTML and JavaScript."/>
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+
+  <!-- OPEN GRAPH -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Abell Documentation" />
+  <meta name="og:description" content="Abell - a Static-Site-Generator for JavaScript Developers. Create fast and scalable static-sites using the syntax of HTML and JavaScript."/>
+  <meta property="og:url" content="https://abelljs.org" />
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:creator" content="@AbellLand"/>
+
+  <meta property="og:image:secure_url" itemprop="image" content="https://res.cloudinary.com/saurabhdaware/image/upload/v1611168187/abell/abell-2021-og.png"/>
+  <meta property="og:image" itemprop="image" content="https://res.cloudinary.com/saurabhdaware/image/upload/v1611168187/abell/abell-2021-og.png"/>
+  <meta property="og:image:width" content="600" />
+  <meta property="og:image:height" content="300" />
+  <meta property="og:image:alt" content="OG image of Abell Docs that shows the title of page" />
+  <meta property="og:description" content="Abell - a Static-Site-Generator for JavaScript Developers. Create fast and scalable static-sites using the syntax of HTML and JavaScript." />
+  <meta property="og:site_name" content="abelljs.org"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link rel="preload" href="/fonts/i.css" as="style" onload="this.rel = 'stylesheet';this.onload = null" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <title>Abell.js - A Static Site Generator for JavaScript Developers</title>
+  
+
+<style>
+:root {
+  --blue-1: #0d0d21;
+  --blue-2: #12122B;
+  --blue-3: #19216D;
+  --blue-4: #24309D;
+  --blue-5: #2E3ECC;
+  --blue-6: #4654D3;
+  --blue-7: #5D6AD9;
+  --blue-8: #8B95E5; 
+  --blue-9: #A2ABEB;
+  --blue-10: #E7EBFD;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  --font-family: "DM Sans";
+  --font-family-mono: "DM Mono";
+
+  --font-color-primary: #222;
+  --background-primary: #fff; /* Almost White */
+  --hr-color: var(--blue-10);
+  --white-black: #111;
+  --elevation-1: #eee;
+  --elevation-2: #ddd;
+  --elevation-3: #f8f8f8;
+
+  --link-color: #044F9F;
+  --link-color-hover: #1081F9;
+  --code-background: var(--blue-1);
+  --sidebar-active-link: #111;
+  --footer-background: #eee;
+}
+
+/* 141424 */
+
+body.dark {
+  --font-color-primary: #ddd;
+  --background-primary: #000;
+  --hr-color: #222;
+  --white-black: #ddd;
+  --elevation-1: var(--blue-1);
+  --elevation-2: #333;
+  --elevation-3: #111;
+
+  --link-color: #ddd;
+  --link-color: #81A7FF;
+  --link-color-hover: #94B4FF;
+  --code-background: var(--blue-1);
+  --sidebar-active-link: #fff;
+  --footer-background: #000;
+}
+
+body.dim {
+  --font-color-primary: #ddd;
+  --background-primary: #171736;
+  --hr-color: #8FB0FF22;
+  --white-black: #ddd;
+  --elevation-1: #1F1F47;
+  --elevation-2: #8FB0FF22;
+  --elevation-3: #1F1F47;
+
+  --link-color: #8FB0FF;
+  --link-color-hover: #94B4FF;
+  --code-background: var(--blue-1);
+  --sidebar-active-link: #fff;
+  --footer-background: var(--blue-2);
+}
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+body {
+  background-color: var(--background-primary);
+  color: var(--font-color-primary);
+  font-family: var(--font-family);
+  font-size: 1.05rem;
+  word-spacing: 0.05rem;
+  padding: 0px;
+  margin: 0px;
+}
+
+a { 
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+a:not(.no-decoration):hover {
+  color: var(--link-color-hover);
+  text-decoration: underline;
+}
+
+pre {
+  margin: 5px 0px;
+  overflow-x: auto;
+}
+
+code {
+  font-family: var(--font-family-mono);
+  padding: 1px 8px;
+  border-radius: 4px;
+  word-spacing: 3px;
+  font-size: smaller;
+  background-color: var(--elevation-1);
+  transition: background-color .3s ease;
+}
+
+hr { 
+  border: 1px solid var(--hr-color);
+  transition: border-color .3s ease;
+}
+
+ul {
+  padding-left: 30px;
+}
+
+li {
+  padding: 3px;
+  font-size: 1.05rem;
+}
+
+.m-0 { margin: 0px; }
+.m-1 { margin: 0.5rem; }
+.m-2 { margin: 1rem }
+
+.p-1 { padding: 0.5rem; }
+.p-2 { padding: 1rem; }
+
+
+[class^="button-"] {
+  display: inline-block;
+  border-radius: 6px;
+  min-width: 100px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.button-primary {
+  padding: 10px 20px;
+  background-color: var(--blue-3) !important;
+  color: var(--blue-10) !important;
+  text-decoration: none !important;
+  border: none;
+  cursor: pointer;
+}
+
+.button-secondary {
+  padding: 8px 20px;
+  background-color: transparent !important;
+  color: var(--blue-3) !important;
+  border: 2px solid var(--blue-3);
+  text-decoration: none !important;
+}
+
+body:not(.user-is-tabbing) button {
+  outline: none;
+}
+
+body.dark-dim .button-primary {
+  background-color: var(--blue-4) !important;
+  color: var(--blue-10) !important;
+}
+
+body.dark-dim .button-secondary {
+  color: var(--blue-8) !important;
+  border: 2px solid var(--blue-6);
+}
+
+.text-xs { font-size: 0.8rem !important; }
+.text-s { font-size: 1rem !important; }
+.text-m { font-size: 1.2rem !important; }
+.text-l { font-size: 1.5rem !important; }
+.text-xl { font-size: 2rem !important; }
+.text-xxl {
+  font-size: 3rem !important;
+  font-weight: bold;
+}
+.text-xxxl {
+  font-size: 3.8rem;
+  font-weight: bold;
+}
+
+.text-bold { font-weight: bold; }
+.text-center { text-align: center; }
+
+body.dark-dim .text-shadow {
+  text-shadow: 3px 5px 2px #0004;
+}
+
+.text-shadow {
+  text-shadow: 9px 9px 38px -2px #0002;
+}
+
+.shadow {
+  box-shadow: 9px 9px 38px -2px rgba(0,0,0,0.4);
+}
+
+body.dark-dim .shadow {
+  box-shadow: 9px 5px 38px -2px rgba(0,0,0,0.5);
+}
+
+[class^="i-"], [class*=" i-"] {
+  vertical-align: bottom;
+}
+
+.row {
+  display: flex;
+}
+
+.row > .col {
+  flex: 1;
+  overflow-x: hidden;
+} 
+
+.row > .col:first-child {
+  padding-right: 20px;
+}
+
+.container {
+  padding: 60px 200px;
+}
+
+@media (max-width: 768px) {
+  .row.row-responsive {
+    display: block;
+  }
+
+  .container {
+    padding: 60px 10px;
+  }
+
+  .row > .col:first-child {
+    padding-right: 0px;
+  }
+}
+header[data-abell-hUUWaY]{padding:0px 190px;position:fixed;top:0px;left:0px;width:100%;background-color:var(--background-primary);z-index:99999;}a[data-abell-hUUWaY]{color:var(--color-primary);}nav[data-abell-hUUWaY],.hamburger-menu[data-abell-hUUWaY]{display:inline-block;float:right;}.hamburger-menu[data-abell-hUUWaY]{display:none;}.nav-item[data-abell-hUUWaY]{padding:25px 30px;display:inline-block;}.brand-logo[data-abell-hUUWaY]{position:absolute;width:35px;top:18px;}.brand-name[data-abell-hUUWaY]{font-size:1.2rem;margin-left:45px;}.dark-mode-toggle-top-nav[data-abell-hUUWaY]{position:relative;right:12px;}@media (max-width: 768px){header[data-abell-hUUWaY]{padding:0px 12px;display:flex;white-space:nowrap;}nav[data-abell-hUUWaY],.hamburger-menu[data-abell-hUUWaY]{flex:1;text-align:right;display:flex;justify-content:flex-end;}.hamburger-menu>button[data-abell-hUUWaY]{padding:0px 12px;background-color:transparent;border:none;color:var(--font-primary);}body:not(.no-sidebar) nav.doc-dark-mode-button[data-abell-hUUWaY],body.no-sidebar .hamburger-menu[data-abell-hUUWaY]{display:none;}body:not(.no-sidebar) .hamburger-icon[data-abell-hUUWaY]{display:inline-block!important;}body .hamburger-menu>button .i-times[data-abell-hUUWaY],body.open-nav .hamburger-menu>button .i-bars[data-abell-hUUWaY]{display:none;transition:transform .3s ease;}body.open-nav .hamburger-menu>button .i-times[data-abell-hUUWaY],body .hamburger-menu>button .i-bars[data-abell-hUUWaY]{display:inline-block;}.brand-name[data-abell-hUUWaY]{font-size:1rem;margin-left:36px;}.nav-item[data-abell-hUUWaY]{padding:25px 10px;font-size:.9rem;}.brand-logo[data-abell-hUUWaY]{width:30px;}}.dark-mode-toggle[data-abell-iFYWuD]{cursor:pointer;float:right;border:none;background:transparent;padding:17px 20px!important;width:40px;}.dark-mode-toggle.float-false[data-abell-iFYWuD]{float:unset;}.dark-mode-toggle.sidebar-button[data-abell-iFYWuD]{position:absolute;bottom:0px;display:none;width:100%;text-align:left;background-color:var(--elevation-3);max-height:60px;}.mode-label[data-abell-iFYWuD]{display:none;}.dark-mode-toggle.sidebar-button .mode-label[data-abell-iFYWuD]{display:inline-block;color:var(--font-color-primary);font-weight:bold;font-size:.9rem;position:absolute;left:60px;bottom:16px;}body:not(.user-is-tabbing) .dark-mode-toggle[data-abell-iFYWuD]:focus{outline:none;}body:not(.user-is-tabbing) button[data-abell-iFYWuD]::-moz-focus-inner{border:0;}button i.i-moon[data-abell-iFYWuD]{font-size:2rem;position:relative;top:-6px;left:2px;}button i.i-sun[data-abell-iFYWuD],button i.i-cloud-sun[data-abell-iFYWuD]{position:relative;top:4px;}button i.i-moon[data-abell-iFYWuD],button i.i-cloud-sun[data-abell-iFYWuD]{color:#fff;}button i.i-sun[data-abell-iFYWuD]{color:#333;}body .dark-mode-toggle .moon[data-abell-iFYWuD],body .dark-mode-toggle .cloud[data-abell-iFYWuD]{display:none;}body .dark-mode-toggle .sun[data-abell-iFYWuD]{display:inline-block;}body.dim .dark-mode-toggle .moon[data-abell-iFYWuD],body.dim .dark-mode-toggle .sun[data-abell-iFYWuD]{display:none;}body.dim .dark-mode-toggle .cloud[data-abell-iFYWuD]{display:inline-block;}body.dark .dark-mode-toggle .cloud[data-abell-iFYWuD],body.dark .dark-mode-toggle .sun[data-abell-iFYWuD]{display:none;}body.dark .dark-mode-toggle .moon[data-abell-iFYWuD]{display:inline-block;}@media (max-width: 768px){.dark-mode-toggle.sidebar-button[data-abell-iFYWuD]{display:block;}}</style>
+
+<link rel="stylesheet" href="bundled-css/main.abell.css"/>
+
+
+<link rel="stylesheet" href="bundled-css/index.css"/>
+
+
+</head>
+<body class="dark-transition index no-sidebar">
+  <header 
+    class="dark-transition" 
+    data-transit-props="background-color, border"
+    style=""
+  data-abell-hUUWaY >
+    <a class="nav-item no-decoration" href="/" data-abell-hUUWaY>
+      <img class="brand-logo" src="/favicon.ico" alt="Abell Logo" data-abell-hUUWaY />
+      <span class="brand-name" data-abell-hUUWaY><strong data-abell-hUUWaY>Abell</strong> <small data-abell-hUUWaY>(v0.10)</small></span>
+    </a>
+    <nav class="doc-dark-mode-button" data-abell-hUUWaY>
+      <a class="nav-item no-decoration" href="/getting-started/" data-abell-hUUWaY>Documentation</a>
+      <span class="dark-mode-toggle-top-nav" data-abell-hUUWaY><button onclick="toggleTheme(this)" aria-label="Activate Dim Mode" aria-pressed="false" title="Toggle Theme" class="dark-mode-toggle nav-item  " data-abell-iFYWuD data-abell-hUUWaY>
+    <span class="sun" data-abell-iFYWuD data-abell-hUUWaY><i class="i-sun text-l" data-abell-iFYWuD data-abell-hUUWaY></i> <span class="mode-label" data-abell-iFYWuD data-abell-hUUWaY>Theme: Light</span></span>
+    <span class="cloud" data-abell-iFYWuD data-abell-hUUWaY><i class="i-cloud-sun text-l" data-abell-iFYWuD data-abell-hUUWaY></i> <span class="mode-label" data-abell-iFYWuD data-abell-hUUWaY>Theme: Dim</span></span>
+    <span class="moon" data-abell-iFYWuD data-abell-hUUWaY><i class="i-moon" data-abell-iFYWuD data-abell-hUUWaY></i> <span class="mode-label" data-abell-iFYWuD data-abell-hUUWaY>Theme: Dark</span></span>
+  </button></span>
+    </nav>
+    <div class="hamburger-menu" data-abell-hUUWaY>
+      <button id="ham-toggle-button" aria-label="Hamburger Menu Toggle" data-abell-hUUWaY>
+        <i class="i i-bars" data-abell-hUUWaY></i>
+        <i class="i i-times" data-abell-hUUWaY></i>
+      </button>
+    </div>
+  </header>
+  <div class="container component-hero" data-abell-gIcUyW>
+    <div data-abell-gIcUyW>
+      <p class="m-2 text-xxxl hero-gradient" data-abell-gIcUyW>A Static-Site-Generator for<br data-abell-gIcUyW/> JavaScript Developers</p>
+      <div class="text-m" style="padding: 0.5rem 0.7rem;" data-abell-gIcUyW>
+        <a class="button-primary text-bold" href="/getting-started/" data-abell-gIcUyW>Get Started</a>
+        <a class="button-secondary m-2" href="https://github.com/abelljs/abell" data-abell-gIcUyW>GitHub</a>
+      </div>
+    </div>
+
+    <div style="padding: 4rem 0rem" data-abell-gIcUyW>
+      <pre data-abell-gIcUyW><code class="hljs hljs-shell nohighlight shadow" data-abell-gIcUyW>npx create-abell-app my-cool-blog<br data-abell-gIcUyW/>cd my-cool-blog<br data-abell-gIcUyW/>npm run dev<br data-abell-gIcUyW/></code>
+      </pre>
+    </div>
+  </div>
+  
+  <main>
+    <section class="container" data-abell-hLfkPU>
+    <h2 data-abell-hLfkPU>Get Started with Starters</h2>
+    <div class="theme-container shadow" data-abell-hLfkPU>
+        <img alt="Cover image of Blog Starter" style="width: 100%;" loading="lazy" src="https://res.cloudinary.com/saurabhdaware/image/upload/c_scale,w_400/v1588342001/abell/og.png" data-abell-hLfkPU />
+        <div class="theme-info" data-abell-hLfkPU>
+          <h3 class="theme-name" data-abell-hLfkPU>Blog Starter</h3>
+          <div data-abell-hLfkPU>by Abell Team</div>
+          <div class="theme-links" data-abell-hLfkPU>
+            <a rel="noopener noreferrer" target="_blank" rel="noopener" href="https://abell-starter-minima.netlify.app" data-abell-hLfkPU>Preview</a>
+            <a rel="noopener noreferrer" target="_blank" rel="noopener" href="https://github.com/abelljs/abell-starter-minima" data-abell-hLfkPU>GitHub</a>
+            <hr style="margin: 10px 0px;" data-abell-hLfkPU/>
+          </div>
+          <div class="theme-use" data-abell-hLfkPU>
+            <h4 style="margin: 0px 0px 16px 0px;font-size: 13pt;" data-abell-hLfkPU>Use this Starter</h4>
+            <div class="theme-deploy" data-abell-hLfkPU>
+              <a rel="noopener noreferrer" target="_blank" href="https://app.netlify.com/start/deploy?repository=https://github.com/abelljs/abell-starter-minima" data-abell-hLfkPU>Deploy with Netlify</a>
+              <a rel="noopener noreferrer" target="_blank" href="https://github.com/abelljs/abell-starter-minima/generate" data-abell-hLfkPU>Generate on GitHub</a>
+            </div>
+            <div style="padding: 10px 6px 3px 10px;" data-abell-hLfkPU>or</div> 
+            <div style="padding: 5px 4px;" data-abell-hLfkPU>Create new project locally with:</div>
+            <code style="display: block;word-spacing: 3px;font-size: unset;" data-abell-hLfkPU>npx create-abell-app my-app --template abelljs/abell-starter-minima</code>
+          </div>
+        </div>
+      </div>
+      
+      <div class="theme-container shadow" data-abell-hLfkPU>
+        <img alt="Cover image of Portfolio Starter" style="width: 100%;" loading="lazy" src="https://res.cloudinary.com/saurabhdaware/image/upload/v1597399661/abell/Screenshot_from_2020-08-14_15-36-59.png" data-abell-hLfkPU />
+        <div class="theme-info" data-abell-hLfkPU>
+          <h3 class="theme-name" data-abell-hLfkPU>Portfolio Starter</h3>
+          <div data-abell-hLfkPU>by Abell Team</div>
+          <div class="theme-links" data-abell-hLfkPU>
+            <a rel="noopener noreferrer" target="_blank" rel="noopener" href="https://abell-starter-portfolio.netlify.app" data-abell-hLfkPU>Preview</a>
+            <a rel="noopener noreferrer" target="_blank" rel="noopener" href="https://github.com/abelljs/abell-starter-portfolio" data-abell-hLfkPU>GitHub</a>
+            <hr style="margin: 10px 0px;" data-abell-hLfkPU/>
+          </div>
+          <div class="theme-use" data-abell-hLfkPU>
+            <h4 style="margin: 0px 0px 16px 0px;font-size: 13pt;" data-abell-hLfkPU>Use this Starter</h4>
+            <div class="theme-deploy" data-abell-hLfkPU>
+              <a rel="noopener noreferrer" target="_blank" href="https://app.netlify.com/start/deploy?repository=https://github.com/abelljs/abell-starter-portfolio" data-abell-hLfkPU>Deploy with Netlify</a>
+              <a rel="noopener noreferrer" target="_blank" href="https://github.com/abelljs/abell-starter-portfolio/generate" data-abell-hLfkPU>Generate on GitHub</a>
+            </div>
+            <div style="padding: 10px 6px 3px 10px;" data-abell-hLfkPU>or</div> 
+            <div style="padding: 5px 4px;" data-abell-hLfkPU>Create new project locally with:</div>
+            <code style="display: block;word-spacing: 3px;font-size: unset;" data-abell-hLfkPU>npx create-abell-app my-app --template abelljs/abell-starter-portfolio</code>
+          </div>
+        </div>
+      </div>
+  </section>
+    <section class="container" id="sponsors" data-abell-bIzHwx>
+    <h2 data-abell-bIzHwx>Sponsors</h2>
+    <h3 data-abell-bIzHwx>Gold Sponsors</h3>
+    <div class="gold-sponsors" data-abell-bIzHwx>
+    <a class="sponsor-main" href="https://geekflare.com/" target="_blank" rel="noopener" data-abell-bIzHwx>
+          <img alt="Logo of Geekflare" src="https://res.cloudinary.com/saurabhdaware/image/upload/c_scale,w_120/v1598110012/abell/sponsors/geekflare.png" data-abell-bIzHwx/>
+          <span class="sponsor-name text-center text-m" data-abell-bIzHwx>Geekflare</span>
+        </a>
+    </div>
+    <div class="backers" data-abell-bIzHwx>
+      <h3 data-abell-bIzHwx>Backers</h3>
+      <a class="sponsor-main backer-dp" href="https://twitter.com/siddharthkp" target="_blank" rel="noopener" data-abell-bIzHwx>
+              <img alt="Logo of Sid" src="https://avatars.githubusercontent.com/siddharthkp" data-abell-bIzHwx/>
+            </a>
+          
+            <a class="sponsor-main backer-dp" href="https://twitter.com/SantoshYadavDev" target="_blank" rel="noopener" data-abell-bIzHwx>
+              <img alt="Logo of Santosh Yadav" src="https://www.gravatar.com/avatar/0f2bcabe9963edd738f1e9d854d34af2?default=404" data-abell-bIzHwx/>
+            </a>
+    </div>
+    <a href="become-a-sponsor" class="button-secondary" data-abell-bIzHwx>Become a Sponsor</a>
+  </section>
+    <section class="container" id="why-abell" data-abell-dCDXVK>
+    <h2 id="why-abell" data-abell-dCDXVK>Why Abell?</h2>
+<hr data-abell-dCDXVK>
+<ul data-abell-dCDXVK>
+<li data-abell-dCDXVK><a href="#new-template-engine-to-flatten-the-learning-curve-and-faster-builds-💅" data-abell-dCDXVK>New Template Engine</a></li>
+<li data-abell-dCDXVK><a href="#output-what-is-needed" data-abell-dCDXVK>Output What is Needed</a></li>
+<li data-abell-dCDXVK><a href="#control-over-bundling" data-abell-dCDXVK>Control Over Bundling</a></li>
+<li data-abell-dCDXVK><a href="#build-json-based-websites--" data-abell-dCDXVK>Build JSON Based Websites</a></li>
+<li data-abell-dCDXVK><a href="#make-use-of-nodejs-ecosystem" data-abell-dCDXVK>Make use of Node.js Ecosystem</a></li>
+</ul>
+<hr data-abell-dCDXVK>
+<h3 id="new-template-engine-to-flatten-the-learning-curve-and-faster-builds-💅" data-abell-dCDXVK>New Template Engine to Flatten the Learning Curve and Faster Builds 💅</h3>
+<p data-abell-dCDXVK>Abell files are HTML files which allow you to write JS inside curly brackets so you can use JavaScript to loop over data, require static data, and use conditions in the HTML. Styling, client-side scripting and almost everything else stays same as you would do in vanilla HTML.</p>
+<div class="row row-responsive" data-abell-dCDXVK>
+<div class="col" data-abell-dCDXVK>
+<p data-abell-dCDXVK><strong data-abell-dCDXVK>Input (.abell)</strong></p>
+<p data-abell-dCDXVK><code data-abell-dCDXVK>index.abell</code></p>
+<pre data-abell-dCDXVK><code class="language-abell" data-abell-dCDXVK>{{ 
+  const a = 'Hello';
+  const b = ', World 🌻';
+}}
+
+&lt;html&gt;
+  &lt;body&gt;
+    I can render JavaScript! 
+    Look: {{ a + b.toUpperCase() }}
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+</div>
+<div class="col" data-abell-dCDXVK>
+<p data-abell-dCDXVK><strong data-abell-dCDXVK>Output (.html)</strong></p>
+<p data-abell-dCDXVK><code data-abell-dCDXVK>index.html</code></p>
+<pre data-abell-dCDXVK><code class="language-html" data-abell-dCDXVK>&lt;html&gt;
+  &lt;body&gt;
+    I can render JavaScript! 
+    Look: Hello, WORLD 🌻
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p data-abell-dCDXVK><a href="https://codesandbox.io/s/abell-hello-world-zit90?fontsize=14&amp;hidenavigation=1&amp;module=%2Fsrc%2Findex.abell&amp;theme=dark" data-abell-dCDXVK><img src="https://codesandbox.io/static/img/play-codesandbox.svg" alt="Edit abell-hello-world" data-abell-dCDXVK></a></p>
+</div>
+</div>
+<h3 id="output-what-is-needed" data-abell-dCDXVK>Output What is Needed</h3>
+<p data-abell-dCDXVK>Abell builds a static website for you on <code data-abell-dCDXVK>abell build</code> so if your website does not need any client-side JavaScript, Abell will not add any JavaScript in your project!</p>
+<p data-abell-dCDXVK>For example, if we don't have any CSS and script in the code, this is what the output will look like:</p>
+<div class="row" data-abell-dCDXVK>
+<div class="abell-li" style="flex:2" data-abell-dCDXVK>
+<p data-abell-dCDXVK><strong data-abell-dCDXVK>Input</strong></p>
+<ul data-abell-dCDXVK>
+<li data-abell-dCDXVK>index.abell</li>
+<li data-abell-dCDXVK>Nav.abell</li>
+<li data-abell-dCDXVK>Footer.abell</li>
+<li data-abell-dCDXVK>Meta.abell</li>
+</ul>
+</div>
+<div style="flex:3;" data-abell-dCDXVK>
+<p data-abell-dCDXVK><strong data-abell-dCDXVK>Output</strong></p>
+<div style="padding: 30px 0px" data-abell-dCDXVK>
+<img src="https://www.w3.org/html/logo/downloads/HTML5_Badge_512.png" width="15" alt="HTML logo" data-abell-dCDXVK/> index.html
+</div>
+</div>
+</div>
+<h3 id="control-over-bundling" data-abell-dCDXVK>Control Over Bundling!</h3>
+<p data-abell-dCDXVK>Have a critical CSS/JS that needs to load as soon as user visits the page? With Abell you can inline a CSS or JavaScript from component!</p>
+<div class="tabbed-editor" data-abell-dCDXVK>
+  <div class="menu" data-abell-dCDXVK>
+    <button class="active" data-editorid="bundling-footer" data-abell-dCDXVK>./theme/components/TestFooter.abell</button>
+    <button data-editorid="bundling-index" data-abell-dCDXVK>./theme/index.abell</button>
+  </div>
+  <div class="tabs" data-abell-dCDXVK>
+  <div class="active-tab" id="bundling-footer" data-abell-dCDXVK>
+<pre data-abell-dCDXVK><code class="language-abell" data-abell-dCDXVK>&lt;AbellComponent&gt;
+  &lt;template&gt;
+    &lt;footer&gt;© Abell &lt;span class=&quot;year&quot;&gt;&lt;/span&gt;&lt;/footer&gt;
+  &lt;/template&gt;
+
+  &lt;!-- 
+    'inlined' attribute adds CSS to &lt;head&gt; tag of the parent page during build. 
+    Without it, styles are bundled into a new file and link is added to parent page.
+   --&gt;
+  &lt;style inlined&gt;
+    footer {
+      background-color: #111;
+      color: #fff;
+      padding: 10px 20px;
+    }
+  &lt;/style&gt;
+
+  &lt;!-- 
+    'bundle' attribute adds the content to a separate bundle of given name 
+    ('footer.js' in this case) 
+
+    scopedSelector ensures the selected element is from same component. 
+    It is replacement to document.querySelector
+  --&gt;
+  &lt;script bundle=&quot;footer.js&quot;&gt;     
+    scopedSelector('.year').innerHTML = new Date().getFullYear();
+  &lt;/script&gt;
+&lt;/AbellComponent&gt;
+</code></pre>
+  </div>
+  <div id="bundling-index" data-abell-dCDXVK>
+<pre data-abell-dCDXVK><code class="language-abell" data-abell-dCDXVK>{{
+  const TestFooter = require('./components/TestFooter.abell');
+}}
+
+&lt;html&gt;
+&lt;body&gt;
+  &lt;footer&gt;
+    This footer will be unaffected by the styles in Footer component since they are scoped.
+    &lt;span class=&quot;year&quot;&gt;This span will be ignored as well&lt;/span&gt;
+  &lt;/footer&gt;
+
+  &lt;TestFooter /&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</code></pre>
+  </div>
+</div>
+</div>
+<p data-abell-dCDXVK><a href="https://codesandbox.io/s/control-over-bundling-hkmhr?file=/theme/components/TestFooter.abell" data-abell-dCDXVK><img src="https://codesandbox.io/static/img/play-codesandbox.svg" alt="Control Over Bundling" data-abell-dCDXVK></a></p>
+<p data-abell-dCDXVK><strong data-abell-dCDXVK>Output</strong></p>
+<div class="tabbed-editor" data-abell-dCDXVK>
+  <div class="menu" data-abell-dCDXVK>
+    <button class="active" data-editorid="bundling-dist-1" data-abell-dCDXVK>./dist/index.html</button>
+    <button data-editorid="bundling-dist-2" data-abell-dCDXVK>./dist/bundled-js/footer.js</button>
+  </div>
+  <div class="tabs" data-abell-dCDXVK>
+  <div class="active-tab" id="bundling-dist-1" data-abell-dCDXVK>
+<pre data-abell-dCDXVK><code class="language-html" data-abell-dCDXVK>&lt;html&gt;
+&lt;head&gt;
+  &lt;style&gt;
+  /* Styles are inlined because of 'inlined' attribute in component */
+
+  footer[data-abell-hCdFua] {
+    background-color:#111;
+    color:#fff;
+    padding:10px 20px;
+  }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;footer&gt;
+    This footer will be unaffected by the styles in Footer component since they are scoped
+    &lt;span class=&quot;year&quot;&gt;This span will be ignored as well&lt;/span&gt;
+  &lt;/footer&gt;
+  &lt;footer data-abell-hCdFua&gt;© Abell &lt;span class=&quot;year&quot; data-abell-hCdFua&gt;&lt;/span&gt;&lt;/footer&gt;
+
+  &lt;!-- JS from component, goes into this file --&gt;
+  &lt;script src=&quot;./bundled-js/footer.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+</div>
+<div id="bundling-dist-2" data-abell-dCDXVK>
+<pre data-abell-dCDXVK><code class="language-js" data-abell-dCDXVK>// this line is injected by Abell
+const scopedSelector = (queryString) =&gt; document.querySelector(queryString + '[data-abell-hCdFua]');const scopedSelectorAll = (queryString) =&gt; document.querySelectorAll(queryString + '[data-abell-hCdFua]'); 
+
+// Your JavaScript
+scopedSelector('.year').innerHTML = new Date().getFullYear();
+  
+</code></pre>
+</div>
+</div>
+</div>
+<h3 id="build-json-based-websites--" data-abell-dCDXVK>Build JSON Based Websites <em data-abell-dCDXVK>{ }</em></h3>
+<p data-abell-dCDXVK>If you have a portfolio and you're bored of writing code to add new project, you can have all the info of your projects in a JSON file and render the list in Abell 🥳</p>
+<div class="row row-responsive" data-abell-dCDXVK>
+<div class="col" data-abell-dCDXVK>
+  <div class="tabbed-editor" data-abell-dCDXVK>
+  <div class="menu" data-abell-dCDXVK>
+    <button class="active" data-editorid="build-json-projects" data-abell-dCDXVK>./projects.abell</button>
+    <button data-editorid="build-json-site" data-abell-dCDXVK>./site.json</button>
+  </div>
+  <div class="tabs" data-abell-dCDXVK>
+  <div class="active-tab" id="build-json-projects" data-abell-dCDXVK>
+<pre data-abell-dCDXVK><code class="language-abell" data-abell-dCDXVK>{{ const siteData = require('./site.json'); }}
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;{{ siteData.title }}&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    {{
+      siteData.projects
+        .map(project =&gt; 
+          `&lt;div&gt;${project.name}&lt;/div&gt;`
+        )
+    }}
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </div>
+  <div id="build-json-site" data-abell-dCDXVK>
+<pre data-abell-dCDXVK><code class="language-json" data-abell-dCDXVK>{
+  &quot;title&quot;: &quot;This is my Title&quot;,
+  &quot;projects&quot;: [
+    {
+      &quot;name&quot;: &quot;My cool project&quot;,
+      &quot;description&quot;: &quot;Look at this cool project&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Another project&quot;,
+      &quot;description&quot;: &quot;This is another project&quot;
+    }
+  ]
+}
+
+</code></pre>
+  </div>
+  </div>
+  </div>
+</div>
+<div class="col" data-abell-dCDXVK>
+<p data-abell-dCDXVK><strong data-abell-dCDXVK>Output</strong></p>
+<p data-abell-dCDXVK><code data-abell-dCDXVK>./dist/projects.html</code></p>
+<pre data-abell-dCDXVK><code class="language-html" data-abell-dCDXVK>&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;This is my Title&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div&gt;My cool project&lt;/div&gt;
+    &lt;div&gt;Another project&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+</div>
+</div>
+<p data-abell-dCDXVK><a href="https://codesandbox.io/s/read-json-obfmw?fontsize=14&amp;hidenavigation=1&amp;module=%2Fsrc%2Findex.abell&amp;theme=dark" data-abell-dCDXVK><img src="https://codesandbox.io/static/img/play-codesandbox.svg" alt="Edit read-json" data-abell-dCDXVK></a>
+<br data-abell-dCDXVK/><br data-abell-dCDXVK/></p>
+<h3 id="make-use-of-nodejs-ecosystem" data-abell-dCDXVK>Make Use of Node.js Ecosystem</h3>
+<p data-abell-dCDXVK>Though there is a way to create Abell Plugins, in most of the cases you can completely remove that abstraction and make use of Node.js directly from your Abell file.</p>
+<div class="row row-responsive" data-abell-dCDXVK>
+<div style="flex: 2" class="col" data-abell-dCDXVK>
+  <div class="tabbed-editor" data-abell-dCDXVK>
+  <div class="menu" data-abell-dCDXVK>
+    <button class="active" data-editorid="node-ecosystem-index" data-abell-dCDXVK>./theme/index.abell</button>
+    <button data-editorid="node-ecosystem-introduction" data-abell-dCDXVK>./theme/introduction.md</button>
+  </div>
+  <div class="tabs" data-abell-dCDXVK>
+  <div class="active-tab" id="node-ecosystem-index" data-abell-dCDXVK>
+<pre data-abell-dCDXVK><code class="language-abell" data-abell-dCDXVK>{{
+  // Native Node.js Modules
+  const fs = require('fs');
+  const path = require('path');
+
+  // NPM Library 🤯 https://npmjs.org/package/remarkable
+  const { Remarkable } = require('remarkable');
+  const md = new Remarkable();
+}}
+
+&lt;html&gt;
+&lt;body&gt;
+  {{
+    const markdownPath = path.join(__dirname, 'introduction.md');
+
+    // Read Markdown Content and render it to HTML with Remarkable
+    md.render(fs.readFileSync(markdownPath, 'utf-8'))
+  }}
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </div>
+  <div id="node-ecosystem-introduction" data-abell-dCDXVK>
+<pre data-abell-dCDXVK><code class="language-md" data-abell-dCDXVK># Hello from Markdown
+
+![Abell Logo](https://abelljs.org/favicon.ico)
+
+This text is coming from 
+[Markdown File](https://en.wikipedia.org/wiki/Markdown) 
+in `theme/introduction.md`
+
+Don't know how to implement something in Abell? 
+Search for how to implement it in Node.js and 
+most of the things will just work out of the box
+
+
+
+
+
+
+
+
+
+</code></pre>
+  </div>
+  </div>
+  </div>
+</div>
+<div class="col" data-abell-dCDXVK>
+<p data-abell-dCDXVK><strong data-abell-dCDXVK>Output</strong></p>
+<p data-abell-dCDXVK><code data-abell-dCDXVK>./dist/index.html</code></p>
+<iframe src="examples/markdown.html"
+  loading="lazy"
+  style="width:100%; height:300px; border:0; border-radius: 4px; overflow:hidden;background-color: #fff;"
+  title="vanilla-node-markdown" data-abell-dCDXVK
+></iframe>
+<p data-abell-dCDXVK><a href="https://codesandbox.io/s/vanilla-node-markdown-tnwx7?fontsize=14&amp;hidenavigation=1&amp;theme=dark" data-abell-dCDXVK><img src="https://codesandbox.io/static/img/play-codesandbox.svg" alt="Edit vanilla-node-markdown" data-abell-dCDXVK></a></p>
+</div>
+</div>
+<p data-abell-dCDXVK><br data-abell-dCDXVK/><br data-abell-dCDXVK/></p>
+<h3 id="and-a-lot-more" data-abell-dCDXVK>And a lot more!!</h3>
+<p data-abell-dCDXVK><a href="getting-started/" data-abell-dCDXVK>Get Started with Abell</a> for complete documentation 🐨🎉</p>
+<p data-abell-dCDXVK><br data-abell-dCDXVK/><br data-abell-dCDXVK/></p> 
+  </section>
+    <section class="github-contributors-section container" data-abell-fQVymv>
+    <h2 data-abell-fQVymv>GitHub Contributors</h2>
+    <div class="github-contributors-holder" data-abell-fQVymv>
+    </div>
+    <div style="padding: 30px 3px;" data-abell-fQVymv>Check out <a href="https://github.com/abelljs" data-abell-fQVymv>GitHub @abelljs</a> for list of repositories, every repo has a README for contribution guide</div>
+  </section>
+  </main>
+
+  <footer data-abell-jLzQID>
+    <div class="links row" data-abell-jLzQID>
+      <div class="col" data-abell-jLzQID>
+        <div class="footer-heading" data-abell-jLzQID>Social</div>
+        <div class="link-container" data-abell-jLzQID>
+          <a href="https://github.com/abelljs" data-abell-jLzQID>GitHub</a>
+          <a href="https://twitter.com/AbellLand" data-abell-jLzQID>Twitter @AbellLand</a>
+        </div>
+        <div class="footer-heading" data-abell-jLzQID>Channels</div>
+        <div class="link-container" data-abell-jLzQID>
+          <a href="https://github.com/abelljs/abell/discussions" data-abell-jLzQID>GitHub Discussions <i class="i i-external-link" data-abell-jLzQID></i></a>
+          <a href="https://discord.gg/ndsVpRG" data-abell-jLzQID>
+            Discord Server <i class="i i-external-link" data-abell-jLzQID></i>
+          </a>
+          <a href="https://github.com/abelljs/abell/issues" data-abell-jLzQID>GitHub Issues <i class="i i-external-link" data-abell-jLzQID></i></a>
+        </div>
+      </div>
+      <div class="col" data-abell-jLzQID>
+        <div class="footer-heading" data-abell-jLzQID>Repositories</div>
+        <div class="link-container" data-abell-jLzQID>
+          <a href="https://github.com/abelljs/abell" data-abell-jLzQID>abelljs/abell</a>
+          <a href="https://github.com/abelljs/abell-renderer" data-abell-jLzQID>abelljs/abell-renderer</a>
+          <a href="https://github.com/abelljs/abell-website" data-abell-jLzQID>abelljs/abell-website</a>
+          <a href="https://github.com/abelljs/create-abell-app" data-abell-jLzQID>abelljs/create-abell-app</a>
+        </div>
+        <div class="footer-heading" data-abell-jLzQID>Contributing</div>
+        <div class="link-container" data-abell-jLzQID>
+          <a href="https://github.com/abelljs/abell/blob/main/CODE_OF_CONDUCT.md" data-abell-jLzQID>Code of Conduct</a>
+          <a href="/contributing/" data-abell-jLzQID>Contributing Guidelines</a>
+        </div>
+      </div>
+    </div>
+    <div class="icon-credits" data-abell-jLzQID>
+      <div data-abell-jLzQID>
+        Icons from <a href="https://fontawesome.com/license" title="FontAwesome" data-abell-jLzQID>FontAwesome</a>, and 
+        <a href="https://www.flaticon.com/" title="Flaticon" data-abell-jLzQID>Flaticon</a> 
+        (By <a href="https://www.flaticon.com/authors/google" title="Google" data-abell-jLzQID>Google</a>)
+      </div>
+      <div data-abell-jLzQID>
+        Built with <a href="https://abelljs.org" data-abell-jLzQID>Abell</a> by <a href="https://github.com/abelljs/abell-website/graphs/contributors" data-abell-jLzQID>GitHub Contributors</a>
+      </div>
+    </div>
+    <div class="copyright-container" data-abell-jLzQID>
+      Copyright © <span id="footer-year" data-abell-jLzQID></span> <a href="https://saurabhdaware.in" data-abell-jLzQID>Saurabh Daware</a>.
+    </div>
+  </footer>
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+  <script defer src="./static-js/main.js"></script>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Mono&display=swap" as="style" onload="this.rel = 'stylesheet';this.onload = null" />
+  <script>
+    const isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+    if(isFirefox){
+      const preloadLinks = ["/fonts/i.css"]
+      document.head.innerHTML += /* html */ `
+        ${
+          preloadLinks.map(preloadLink => /* html */ `
+            <link rel="stylesheet" href="${preloadLink}" />
+          `).join('\n')
+        }
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono&display=swap" />
+      `
+    }
+  </script>
+<script>
+  function setTheme(theme, shouldStore = false) {
+    const toggleButtons = document.querySelectorAll('.dark-mode-toggle' + "[data-abell-iFYWuD]");
+    if (theme === 'light') {
+      document.body.classList.remove('dim');
+      document.body.classList.remove('dark');
+      document.body.classList.remove('dark-dim');
+      if (shouldStore) window.localStorage.setItem('prefers-theme', 'light');
+      toggleButtons.forEach(toggleButton => {
+        toggleButton.setAttribute('aria-label', 'Activate Dim Mode');
+      })
+    } else if (theme === 'dim') {
+      document.body.classList.remove('dark');
+      document.body.classList.add('dim');
+      document.body.classList.add('dark-dim');
+      
+      if (shouldStore) window.localStorage.setItem('prefers-theme', 'dim');
+      toggleButtons.forEach(toggleButton => {
+        toggleButton.setAttribute('aria-label', 'Activate Dark Mode');
+      })
+    }else {
+      document.body.classList.remove('dim');
+      document.body.classList.add('dark');
+      document.body.classList.add('dark-dim');
+      if (shouldStore) window.localStorage.setItem('prefers-theme', 'dark');
+      toggleButtons.forEach(toggleButton => {
+        toggleButton.setAttribute('aria-label', 'Activate Light Mode');
+      })      
+      
+    }
+  }
+
+  const localPreference = window.localStorage.getItem('prefers-theme');
+
+  if (localPreference) {
+    setTheme(localPreference);
+  } else if (window.matchMedia('(prefers-color-scheme: dark)').matches){
+    setTheme('dim');
+  }
+
+  function toggleTheme(toggleButton) {
+    document.querySelectorAll('.dark-transition').forEach((el) => {      
+      if (el.dataset.transitProps) {
+        el.style.transition = el.dataset.transitProps
+          .split(',')
+          .map(transitProp => `${transitProp} .3s ease`)
+          .join(', ');
+
+      } else {
+        el.style.transition = 'all .3s ease';
+      }
+    })
+
+    if (document.body.classList.contains('dim')) {
+      setTheme('dark', true);
+    } else if (document.body.classList.contains('dark')) {
+      setTheme('light', true);
+    } else {
+      setTheme('dim', true);
+    }
+  }
+</script>
+<script src="bundled-js/main.abell.js"></script>
+
+
+<script src="bundled-js/index.js"></script>
+</body>
+</html>
